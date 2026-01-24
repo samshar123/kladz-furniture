@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Kladz Furniture</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar" style="position: relative; background: #7C4B2A;">
+        <div class="logo-text" style="color: #FEFCFD;">KLADZ.</div>
+        <ul class="nav-links">
+            <li><a href="index.html" style="color: #FEFCFD;">Home</a></li>
+            <li><a href="index.html#products-section" style="color: #FEFCFD;">Collections</a></li>
+        </ul>
+    </nav>
+
+    <section class="details-section">
+        
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <span id="bread-category">Category</span> / <span id="bread-title" class="active">Product</span>
+        </div>
+
+        <div class="details-container">
+            
+            <div class="gallery-column">
+                <div class="main-image-frame">
+                    <img id="main-img" src="" alt="Product Main">
+                </div>
+                <div class="thumbnail-row" id="thumbnail-container">
+                    </div>
+            </div>
+
+            <div class="info-column">
+                <span class="detail-category" id="detail-category">Category</span>
+                <h1 class="detail-title" id="detail-title">Loading...</h1>
+                <h2 class="detail-price" id="detail-price">$0.00</h2>
+                
+                <p class="detail-desc" id="detail-desc">
+                    Fetching product details...
+                </p>
+
+                <div class="features-box">
+                    <h3>Specifications</h3>
+                    <ul class="feature-list" id="feature-list">
+                        </ul>
+                </div>
+
+                <div class="action-area">
+                    <button class="btn-primary place-order-btn">Place Order</button>
+                    <p class="shipping-note">Free shipping on orders over $1000</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="product-details.js"></script>
+</body>
+</html>

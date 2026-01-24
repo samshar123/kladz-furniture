@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=1920&auto=format&fit=crop",
+        "title": "The Velvet Lounge",
+        "description": "Experience the embrace of luxury with our signature velvet armchair. Perfect for reading corners and quiet evenings."
+    },
+    {
+        "id": 2,
+        "image": "https://images.unsplash.com/photo-1592078615290-033ee584e267?q=80&w=1920&auto=format&fit=crop",
+        "title": "Minimalist Haven",
+        "description": "Clean lines and soft tones define our minimalist sofa collection. Bring serenity to your living space."
+    },
+    {
+        "id": 3,
+        "image": "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?q=80&w=1920&auto=format&fit=crop",
+        "title": "Royal Oak Dining",
+        "description": "Crafted from solid oak, this dining set is the centerpiece of family gatherings and festive feasts."
+    },
+    {
+        "id": 4,
+        "image": "https://images.unsplash.com/photo-1592078615290-033ee584e267?q=80&w=1920&auto=format&fit=crop",
+        "title": "Dreamscape Bed",
+        "description": "Sleep in style with our handcrafted bed frames, designed for both aesthetic appeal and orthopedic support."
+    },
+    {
+        "id": 5,
+        "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=1920&auto=format&fit=crop",
+        "title": "Archive Bookshelf",
+        "description": "A modern storage solution that turns your library into a display of art and intellect."
+    }
+]

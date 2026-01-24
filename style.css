@@ -1,0 +1,1254 @@
+/* --- Variables & Reset --- */
+:root {
+    --primary: #7C4B2A;    /* Brown */
+    --secondary: #FEFCFD;  /* Off-white */
+    --tertiary: #6C6D71;   /* Grey */
+    --quaternary: #F4F7C8; /* Cream/Light Yellow */
+    --overlay-color: rgba(0, 0, 0, 0.4); /* Darkens image for text readability */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--secondary);
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* --- Navigation --- */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    z-index: 10;
+    color: var(--secondary);
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--secondary);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--quaternary);
+}
+
+/* --- Hero Carousel --- */
+.hero-carousel {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Slide Styling */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align text to left */
+    padding-left: 10%; /* Spacing from left */
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Background Image */
+.slide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.7); /* Darken slightly so text pops */
+}
+
+/* Slide Content Box */
+.slide-content {
+    max-width: 600px;
+    color: var(--secondary);
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease 0.3s forwards;
+    opacity: 0; /* Hidden initially for animation */
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Branding in Slide */
+.brand-tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--quaternary);
+    margin-bottom: 15px;
+}
+
+.logo-icon {
+    background-color: var(--primary);
+    color: var(--secondary);
+    padding: 2px 8px;
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+}
+
+.slide-title {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.slide-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #e0e0e0; /* Slightly off-white for reading */
+    border-left: 4px solid var(--primary);
+    padding-left: 15px;
+}
+
+/* Button */
+.btn-primary {
+    padding: 15px 35px;
+    background-color: var(--primary);
+    color: var(--secondary);
+    border: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: var(--quaternary);
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+/* Navigation Arrows */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--secondary);
+    font-size: 2rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+/* Dots Indicator */
+.carousel-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    border: 2px solid var(--secondary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* About section */
+
+/* --- About Section --- */
+.about-section {
+    padding: 100px 50px;
+    background-color: var(--secondary);
+    overflow: hidden;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* Text Styling */
+.about-text {
+    flex: 1; /* Takes up 50% width */
+}
+
+.sub-heading {
+    color: var(--primary);
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.main-heading {
+    font-size: 3rem;
+    color: var(--tertiary);
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.description {
+    font-family: 'Lato', sans-serif;
+    color: #555; /* Slightly darker grey for readability */
+    line-height: 1.8;
+    margin-bottom: 40px;
+    font-size: 1.05rem;
+}
+
+/* Button override for this section */
+.btn-about {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--primary);
+    color: var(--secondary);
+    padding: 15px 40px;
+}
+
+.btn-about:hover {
+    background-color: var(--tertiary);
+}
+
+/* Collage Layout */
+.about-collage {
+    flex: 1; /* Takes up 50% width */
+    display: flex;
+    gap: 20px;
+}
+
+.collage-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+.collage-img {
+    width: 100%;
+    border-radius: 4px; /* Soft edges */
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    box-shadow: 10px 10px 0px var(--quaternary); /* Creative accent shadow */
+}
+
+.collage-img.tall {
+    height: 100%; /* Makes the first image full height */
+}
+
+.collage-img:not(.tall) {
+    height: 250px;
+}
+
+.collage-img:hover {
+    transform: translateY(-5px);
+}
+
+/* --- RESPONSIVE DESIGN (Mobile/Tablet) --- */
+@media (max-width: 992px) {
+    .about-section {
+        padding: 60px 20px;
+    }
+
+    .about-container {
+        flex-direction: column; /* Stacks vertically */
+        text-align: center;
+    }
+
+    .main-heading {
+        font-size: 2.2rem;
+    }
+
+    .about-collage {
+        width: 100%;
+        margin-top: 40px;
+    }
+}
+
+/* Products section */
+
+/* --- Products Section --- */
+.products-section {
+    padding: 80px 50px;
+    background-color: #f9f9f9; /* Slight contrast from white pages */
+}
+
+/* --- Enhanced Section Header --- */
+.styled-header {
+    text-align: center;
+    margin-bottom: 70px;
+    position: relative;
+    padding-top: 20px;
+}
+
+/* 1. The Small Uppercase Label */
+.header-subtitle {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 4px; /* Wide spacing looks premium */
+    text-transform: uppercase;
+    color: var(--tertiary); /* Grey */
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* 2. The Main Title with Italic Accent */
+.header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; /* Larger and bolder */
+    color: var(--primary); /* Brown */
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.header-title em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400; /* Lighter weight for contrast */
+    color: #9a6d4d; /* Slightly lighter brown for elegance */
+}
+
+/* 3. The Decorative Line with Icon */
+.header-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.header-decoration .line {
+    width: 60px; /* Length of the lines */
+    height: 1px;
+    background-color: var(--primary);
+    opacity: 0.3; /* Subtle transparency */
+}
+
+.header-decoration .icon {
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 2.5rem;
+    }
+    
+    .header-decoration .line {
+        width: 40px;
+    }
+}
+
+.product-grid {
+    display: grid;
+    /* Responsive Magic: Fits as many 300px cards as possible */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Product Card Styling */
+.product-card {
+    background-color: var(--secondary);
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.product-img-wrapper {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img-wrapper img {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.product-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Ensures buttons align at bottom if titles vary in length */
+}
+
+.product-cat {
+    font-size: 0.8rem;
+    color: var(--tertiary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+/* Push the button to the bottom */
+.product-btn {
+    margin-top: auto; 
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 700;
+    border: 1px solid var(--primary);
+    padding: 10px 0;
+    text-align: center;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.product-btn:hover {
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+/* Responsive adjustment for mobile padding */
+@media (max-width: 768px) {
+    .products-section {
+        padding: 50px 20px;
+    }
+}
+
+
+/* Product detailed page */
+
+/* --- Product Details Page --- */
+.details-section {
+    padding: 40px 50px;
+    background-color: var(--secondary);
+    min-height: 100vh;
+}
+
+.breadcrumb {
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    color: var(--tertiary);
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: var(--tertiary);
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover { color: var(--primary); }
+.breadcrumb .active { color: var(--primary); font-weight: 700; }
+
+/* Flex Container for Columns */
+.details-container {
+    display: flex;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Left Column: Gallery --- */
+.gallery-column {
+    flex: 1.2; /* Takes up slightly more space */
+}
+
+.main-image-frame {
+    width: 100%;
+    height: 500px;
+    background: #eee;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.main-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Thumbnails */
+.thumbnail-row {
+    display: flex;
+    gap: 15px;
+}
+
+.thumb {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+
+.thumb:hover, .thumb.active {
+    opacity: 1;
+    border-color: var(--primary);
+}
+
+/* --- Right Column: Info --- */
+.info-column {
+    flex: 1;
+    padding-top: 20px;
+}
+
+.detail-category {
+    text-transform: uppercase;
+    color: var(--tertiary);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.detail-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--primary);
+    margin: 10px 0;
+    line-height: 1.1;
+}
+
+.detail-price {
+    font-size: 1.8rem;
+    color: #4a4a4a; /* Darker grey */
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.detail-desc {
+    color: var(--tertiary);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    font-size: 1.05rem;
+}
+
+/* Features Box */
+.features-box {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-left: 4px solid var(--primary);
+    margin-bottom: 40px;
+}
+
+.features-box h3 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.feature-list {
+    list-style: none;
+}
+
+.feature-list li {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.feature-list strong {
+    color: var(--primary);
+    margin-right: 10px;
+}
+
+/* Action Area */
+.place-order-btn {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.place-order-btn:hover {
+    background-color: #5a361e;
+}
+
+.shipping-note {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: var(--tertiary);
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .details-container {
+        flex-direction: column;
+    }
+    .main-image-frame {
+        height: 350px;
+    }
+}
+
+/* --- All Products Page Headers --- */
+.page-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background-color: var(--secondary);
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    font-family: 'Lato', sans-serif;
+    color: var(--tertiary);
+    font-size: 1.1rem;
+}
+
+/* --- Creative Filter Menu --- */
+.filter-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 60px;
+    padding: 0 20px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid #e0e0e0; /* Subtle border */
+    padding: 12px 30px;
+    border-radius: 50px; /* Pill shape */
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    color: var(--tertiary);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+/* Hover State */
+.filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* Active State (Selected) */
+.filter-btn.active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--secondary); /* White text */
+    box-shadow: 0 5px 15px rgba(124, 75, 42, 0.3); /* Brown glow */
+}
+
+/* --- Animation for Filtering --- */
+/* This makes cards fade in nicely when you filter */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-card {
+    /* Apply animation to cards */
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+
+/* --- Creative Benefits Section --- */
+.benefits-section {
+    padding: 100px 50px;
+    background-color: var(--quaternary); /* Cream/Yellow */
+    position: relative;
+    overflow: hidden; /* Keeps the watermark inside */
+    z-index: 1;
+}
+
+/* The Giant Background Watermark */
+.bg-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 15vw; /* Huge responsive size */
+    font-weight: 700;
+    color: var(--primary);
+    opacity: 0.05; /* Very subtle */
+    z-index: -1;
+    pointer-events: none;
+    letter-spacing: 20px;
+}
+
+.benefits-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    align-items: start; /* Allows staggering to work */
+}
+
+/* The Card Wrapper */
+.benefit-card {
+    transition: transform 0.4s ease;
+}
+
+/* CREATIVE: Stagger Effect (Push every 2nd card down) */
+.benefit-card:nth-child(even) {
+    margin-top: 60px; /* This creates the "Wave" look */
+}
+
+/* The Card Content */
+.card-inner {
+    background-color: var(--secondary); /* White card */
+    padding: 40px 25px;
+    text-align: center;
+    /* Organic Leaf Shape: Top-Left & Bottom-Right rounded */
+    border-radius: 40px 0 40px 0; 
+    box-shadow: 0 10px 30px rgba(124, 75, 42, 0.1); /* Soft brown shadow */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(124, 75, 42, 0.1);
+}
+
+/* Hover Interaction */
+.card-inner:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(124, 75, 42, 0.2);
+    border-color: var(--primary);
+}
+
+/* Icon Styling */
+.icon-box {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(124, 75, 42, 0.1); /* Light brown tint */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    color: var(--primary);
+    transition: transform 0.5s ease;
+}
+
+.card-inner:hover .icon-box {
+    transform: rotate(360deg); /* Playful spin on hover */
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+.benefit-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.benefit-card p {
+    font-size: 0.9rem;
+    color: var(--tertiary);
+    line-height: 1.6;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 992px) {
+    .benefits-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Reset stagger for tablet */
+    .benefit-card:nth-child(even) { margin-top: 40px; }
+}
+
+@media (max-width: 600px) {
+    .benefits-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Remove stagger for mobile (stack vertically) */
+    .benefit-card:nth-child(even) { margin-top: 0; }
+}
+
+/* --- Creative Contact Section --- */
+.contact-section {
+    padding: 100px 50px;
+    background-color: var(--primary); /* Dark Brown */
+    color: var(--secondary); /* Off-white text */
+    position: relative;
+}
+
+.contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+/* Left Side: Typography & CTA */
+.cta-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.cta-subtitle {
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    color: var(--quaternary); /* Yellow Accent */
+    margin-bottom: 20px;
+}
+
+.cta-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.cta-heading em {
+    font-style: italic;
+    color: var(--quaternary);
+}
+
+.cta-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    opacity: 0.8;
+    max-width: 450px;
+}
+
+/* Exclusive WhatsApp Button */
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #25D366; /* Official WhatsApp Green */
+    color: white;
+    padding: 18px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.whatsapp-btn:hover {
+    background-color: #1ebc57;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.wa-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Right Side: Contact Details */
+.contact-details {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.05); /* Glassmorphism effect */
+    padding: 50px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.c-icon {
+    font-size: 1.5rem;
+    background: var(--quaternary);
+    color: var(--primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.c-info h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--quaternary);
+}
+
+.c-info a, .c-info p {
+    color: var(--secondary);
+    text-decoration: none;
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.5;
+    transition: color 0.3s;
+}
+
+.c-info a:hover {
+    color: var(--quaternary);
+    text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .cta-heading {
+        font-size: 2.5rem;
+    }
+    
+    .contact-details {
+        width: 100%;
+        padding: 30px;
+    }
+}
+
+
+/* --- Footer Section --- */
+.site-footer {
+    background-color: #2c1a0f; /* Very Dark Coffee Brown */
+    color: #e0e0e0;
+    padding: 70px 50px 20px;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    /* Responsive Grid: 4 columns */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Brand Column */
+.brand-col .logo-text {
+    color: var(--quaternary);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.footer-desc {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #bbb;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    color: var(--secondary);
+    display: flex;             /* Centering magic */
+    align-items: center;       /* Center vertically */
+    justify-content: center;   /* Center horizontally */
+    width: 40px;               /* Fixed width */
+    height: 40px;              /* Fixed height */
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;        /* Make them circular */
+    transition: all 0.3s ease;
+}
+
+.social-icon svg {
+    pointer-events: none;      /* Ensures clicks go to the link, not the SVG */
+}
+
+/* Hover Effect */
+.social-icon:hover {
+    background: var(--quaternary);  /* Cream background */
+    color: var(--primary);          /* Brown Icon */
+    border-color: var(--quaternary);
+    transform: translateY(-3px);    /* Slight float up */
+}
+
+
+
+/* Headings */
+.footer-col h4 {
+    color: var(--quaternary); /* Cream Color */
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+/* Link Lists */
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #bbb;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--quaternary);
+    padding-left: 5px; /* Slide effect */
+}
+
+/* Newsletter Form */
+.newsletter-form {
+    display: flex;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 5px;
+}
+
+.newsletter-form input {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    outline: none;
+    padding: 5px;
+}
+
+.newsletter-form button {
+    background: transparent;
+    border: none;
+    color: var(--quaternary);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* --- Footer Bottom (Credits) --- */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+
+.team-credit {
+    font-family: 'Lato', sans-serif;
+    color: #888;
+}
+
+.team-credit em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--quaternary);
+    margin: 0 3px;
+}
+
+.team-name {
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 50px 20px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* --- Legal Pages (Terms & Privacy) --- */
+.legal-header {
+    background-color: #f9f9f9;
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.legal-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.legal-header p {
+    color: var(--tertiary);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.legal-container {
+    max-width: 800px; /* Narrower width for better reading experience */
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.legal-block {
+    margin-bottom: 40px;
+}
+
+.legal-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    border-left: 3px solid var(--quaternary); /* Creative accent line */
+    padding-left: 15px;
+}
+
+.legal-block p {
+    font-family: 'Lato', sans-serif;
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.legal-block a {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .legal-header h1 {
+        font-size: 2rem;
+    }
+}
